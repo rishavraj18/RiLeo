@@ -1,0 +1,6 @@
+@RiLeo.Services.CouponAPI_HostAddress = http://localhost:5244
+
+GET {{RiLeo.Services.CouponAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35728.132
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrontEnd", "FrontEnd", "{19515523-CC20-4EE0-ABB5-2E3FA9DFF2F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "Gateway", "{91E0761F-A5E8-4D2A-A601-771DEF536DE9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{ACEBF1D8-3921-431B-9785-BEABB1EF2C8C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{AD8A788F-1CB7-4B0D-B491-3C5FBAD0EBBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiLeo.Services.CouponAPI", "RiLeo.Services.CouponAPI\RiLeo.Services.CouponAPI.csproj", "{F3B8460C-E350-4434-9A0C-2511060063A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiLeo.Web", "RiLeo.Web\RiLeo.Web.csproj", "{61C9A79B-3469-45CE-A8B4-18E7E0949791}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F3B8460C-E350-4434-9A0C-2511060063A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3B8460C-E350-4434-9A0C-2511060063A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3B8460C-E350-4434-9A0C-2511060063A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3B8460C-E350-4434-9A0C-2511060063A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61C9A79B-3469-45CE-A8B4-18E7E0949791}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61C9A79B-3469-45CE-A8B4-18E7E0949791}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61C9A79B-3469-45CE-A8B4-18E7E0949791}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61C9A79B-3469-45CE-A8B4-18E7E0949791}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F3B8460C-E350-4434-9A0C-2511060063A5} = {AD8A788F-1CB7-4B0D-B491-3C5FBAD0EBBC}
+		{61C9A79B-3469-45CE-A8B4-18E7E0949791} = {19515523-CC20-4EE0-ABB5-2E3FA9DFF2F1}
+	EndGlobalSection
+EndGlobal
