@@ -7,7 +7,7 @@ using RiLeo.Services.CouponAPI.Models.Dto;
 
 namespace RiLeo.Services.CouponAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/coupon")]
     [ApiController]
     public class CouponAPIController : ControllerBase
     {
@@ -113,6 +113,7 @@ namespace RiLeo.Services.CouponAPI.Controllers
         }
 
         [HttpDelete]
+        [Route("{id:int}")]
         public ResponseDto Delete(int id)
         {
             try
