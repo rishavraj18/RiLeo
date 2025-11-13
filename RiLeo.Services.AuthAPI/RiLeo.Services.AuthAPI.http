@@ -1,0 +1,6 @@
+@RiLeo.Services.AuthAPI_HostAddress = http://localhost:5108
+
+GET {{RiLeo.Services.AuthAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

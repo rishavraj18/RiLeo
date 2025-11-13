@@ -3,11 +3,7 @@
     "Name": "New Profile",
     "Projects": [
       {
-        "Path": "RiLeo.Services.CouponAPI\\RiLeo.Services.CouponAPI.csproj",
-        "Action": "Start"
-      },
-      {
-        "Path": "RiLeo.Web\\RiLeo.Web.csproj",
+        "Path": "RiLeo.Services.AuthAPI\\RiLeo.Services.AuthAPI.csproj",
         "Action": "Start"
       }
     ]
