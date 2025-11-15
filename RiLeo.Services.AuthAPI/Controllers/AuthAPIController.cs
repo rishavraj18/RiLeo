@@ -43,6 +43,7 @@ namespace RiLeo.Services.AuthAPI.Controllers
                 return Unauthorized(_response);
             }
 
+            _response.Result = loginResponse;
             return Ok(_response);
         }
     }
