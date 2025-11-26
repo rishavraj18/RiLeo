@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json;
 using RiLeo.Web.Models;
 using RiLeo.Web.Service.IService;
 using RiLeo.Web.Utility;
@@ -19,6 +21,24 @@ namespace RiLeo.Web.Controllers
         {
             LoginRequestDto loginRequestDto = new ();
             return View(loginRequestDto);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginRequestDto obj)
+        {
+            ResponseDto responseDto = await _authService.LoginAsync(obj);
+
+            if (responseDto != null && responseDto.IsSucess)
+            {
+                LoginResponseDto loginResponseDto = JsonConvert.DeserializeObject<LoginResponseDto>(Convert.ToString(responseDto.Result));
+
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ModelState.AddModelError("CustomError", responseDto.Message);
+                return View(obj);
+            }
         }
 
         [HttpGet]
