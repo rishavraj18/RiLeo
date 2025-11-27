@@ -1,10 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using RiLeo.Web.Models;
 using RiLeo.Web.Service.IService;
 using RiLeo.Web.Utility;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace RiLeo.Web.Controllers
 {
@@ -34,6 +38,7 @@ namespace RiLeo.Web.Controllers
             {
                 LoginResponseDto loginResponseDto = JsonConvert.DeserializeObject<LoginResponseDto>(Convert.ToString(responseDto.Result));
 
+                await SignInUser(loginResponseDto);
                 _tokenProvider.SetToken(loginResponseDto.Token);
 
                 return RedirectToAction("Index", "Home");
@@ -92,10 +97,32 @@ namespace RiLeo.Web.Controllers
             return View(obj);
         }
 
-        [HttpGet]
-        public IActionResult Logout()
+        public async Task<IActionResult> Logout()
         {
-            return View();
+            await HttpContext.SignOutAsync();
+            _tokenProvider.ClearToken();
+            return RedirectToAction("Index", "Home");
+        }
+
+        private async Task SignInUser(LoginResponseDto model)
+        {
+            var handler = new JwtSecurityTokenHandler();
+            var jwt = handler.ReadJwtToken(model.Token);
+            var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
+            identity.AddClaim(new Claim(JwtRegisteredClaimNames.Email, 
+                jwt.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Email).Value));
+            identity.AddClaim(new Claim(JwtRegisteredClaimNames.Sub,
+               jwt.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Sub).Value));
+            identity.AddClaim(new Claim(JwtRegisteredClaimNames.Name,
+               jwt.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Name).Value));
+
+
+            identity.AddClaim(new Claim(ClaimTypes.Name,
+               jwt.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Email).Value));
+
+
+            var principal = new ClaimsPrincipal(identity);
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
         }
     }
 }
