@@ -64,7 +64,7 @@ namespace RiLeo.Web.Service
                     case HttpStatusCode.Forbidden:
                         return new() { IsSucess = false, Message = "Access Denied" };
                     case HttpStatusCode.Unauthorized:
-                        return new() { IsSucess = false, Message = "Username or password is incorrect" };
+                        return new() { IsSucess = false, Message = "UnAuthorized" };
                     case HttpStatusCode.InternalServerError:
                         return new() { IsSucess = false, Message = "Internal Server Error" };
                     default:
